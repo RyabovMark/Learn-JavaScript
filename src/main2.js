@@ -285,3 +285,168 @@
 // console.log(message);
 
 
+// let userName = 'Вася';
+//
+// function showMessage() {
+//   userName = 'Петя';
+//   let message = 'Привет, ' + userName;
+//   console.log(message);
+// }
+//
+// console.log(userName);
+// showMessage();
+// console.log(userName);
+
+
+// let userName = 'Вася';
+//
+// function showMessage() {
+//   let userName = 'Петя';
+//   let message = 'Привет, ' + userName;
+//   console.log(message);
+// }
+//
+// showMessage();
+// console.log(userName);
+
+
+// function showMessage(from, text) {
+//   console.log(from + ' ' + text + '?');
+// }
+//
+// showMessage('Anna', 'Hi');
+// showMessage('Dima', 'Hello');
+// showMessage('Anna', 'How are you?');
+// showMessage('Dima', 'i`m fine, thx');
+
+
+// function showMessage(from, text = 'Текст не добавлен') {
+//   console.log(from + ':' + text);
+// }
+// showMessage('Anna');
+
+
+// function sum(a, b) {
+//   return a + b;
+// }
+// let result = sum(1, 2);
+// console.log(result);
+
+
+// function checkAge(age) {
+//   if (age > 18) {
+//     return true;
+//   } else {
+//     return confirm('Родители разрешили?');
+//   }
+// }
+//
+// let age = prompt('Сколько вам лет?', '');
+// if (checkAge(age)) {
+//   alert('Доступ получен');
+// } else {
+//   alert('Доступ закрыт');
+// }
+
+
+// function showPrimes(n) {
+//
+//   for (let i = 2; i < n; i++) {
+//     if (!isPrime(i)) continue;
+//
+//     console.log(i);  // простое
+//   }
+// }
+//
+// function isPrime(n) {
+//   for (let i = 2; i < n; i++) {
+//     if (n % i === 0) return false;
+//   }
+//   return true;
+// }
+//
+// showPrimes(10)
+
+
+// function checkAge(age){
+//   return (age>18)? true:confirm('Родители разрешили?');
+// }
+//
+// function min(a,b) {
+//   return (a>b)?b:a;
+// }
+//
+// console.log(min(2, 5))
+// console.log(min(3, -1))
+// console.log(min(1, 1))
+
+
+// function pow(x, n) {
+//   if (n <= 1) {
+//     console.log('n меньше 1')
+//   } else {
+//     let powN = x;
+//     for (let i = 1; i < n; i++) {
+//       powN *= x;
+//     }
+//     return powN;
+//   }
+// }
+//
+// console.log((pow(3, 3)));
+
+
+//Function Expression
+
+//Function Declaration можно использовать во всем скрипте (или блоке кода, если функция объявлена в блоке).
+// function sayHi() {
+//   console.log('Привет');
+// }
+//Function Expression создаётся, когда выполнение доходит до него, и затем уже может использоваться.
+// let sayHi = function () {
+//   console.log('Привет');
+// }
+
+
+// function ask(question, yes, no) {
+//   if (confirm(question)) yes()
+//   else no();
+// }
+// function showOK() {
+//   console.log('Вы согласны.');
+// }
+// function showCancel() {
+//   console.log('Вы отменили выполнение.');
+// }
+// ask('Вы согласны?',showOK,showCancel);
+
+
+// function ask(question, yes, no) {
+//   if (confirm(question)) yes()
+//   else no();
+// }
+//
+// ask(
+//   "Вы согласны?",
+//   function() { alert("Вы согласились."); },
+//   function() { alert("Вы отменили выполнение."); }
+// );
+
+// let age = prompt("Сколько Вам лет?", 18);
+
+// let welcome;
+//
+// if (age < 18) {
+//   welcome = function () {
+//     alert('Привет')
+//   };
+// } else {
+//   welcome = function () {
+//     alert('Здравствуйте')
+//   }
+// }
+// welcome();
+
+
+// Функции-стрелки, основы
+
