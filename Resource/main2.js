@@ -450,3 +450,34 @@
 
 // Функции-стрелки, основы
 
+// let sum = (a, b) => a + b;
+
+// let double = n => n * 2;
+// console.log(double(3));
+
+// let sayHi = () => console.log('Hello!');
+// sayHi();
+
+// let age = 18;
+// let welcome = (age < 18) ?
+//   () => console.log('Привет') :
+//   () => console.log('Здравствуйте');
+// welcome();
+
+// let sum = (a,b)=>{
+//   let result = a+b;
+//   return result;
+// };
+// console.log(sum(12,12));
+
+// function ask(question, yes, no) {
+//   if (confirm(question)) yes()
+//   else no()
+// }
+//
+// ask(
+//   'вы согласны?',
+//   () => alert('Вы согласились!'),
+//   () => alert('Вы отказались')
+// );
+
