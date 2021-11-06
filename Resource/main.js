@@ -1047,3 +1047,79 @@
 
 // Конструкторы, создание объектов через 'new'
 
+// function User(name){
+//   this.name=name;
+//   this.isAdmin=false;
+// }
+//
+// let user = new User('Vasya');
+// console.log(user);
+
+// function Calculator() {
+//   this.read = function () {
+//     this.a = +prompt('a?', '');
+//     this.b = +prompt('b?', '');
+//   }
+//   this.mul = function () {
+//     return this.a * this.b
+//   }
+//   this.sum = function () {
+//     return this.b + this.a
+//   }
+// }
+//
+// let calculator = new Calculator();
+// calculator.read();
+// console.log('Sum=' + calculator.sum());
+// console.log('Mul=' + calculator.mul());
+// console.log(calculator)
+
+// function Accumulator(startingValue) {
+//   this.value = startingValue;
+//   this.read = function () {
+//     this.value += +prompt('number', '');
+//   };
+// }
+//
+// let accumulator = new Accumulator(1);
+//
+// accumulator.read();
+// accumulator.read();
+//
+// alert(accumulator.value);
+
+
+//Опциональная цепочка ?
+
+// let user = {};
+// console.log(user?.address?.street);
+
+// let user = null;
+// let x = 0;
+// user?.sayHi(x++);
+// console.log(x);
+
+// let user1= {
+//   admin(){
+//     console.log('Я администратор');
+//   }
+// }
+// let user2={};
+//
+// user1.admin?.();
+// user2.admin?.();
+
+// let user1 = {
+//   firstName: 'Ivan'
+// };
+// let user2 = null;
+// let key = 'firstName';
+//
+// console.log(user1?.[key]);
+// console.log(user2?.[key]);
+
+// Синтаксис опциональной цепочки ?. имеет три формы:
+
+//obj?.prop – возвращает obj.prop, если существует obj, и undefined в противном случае.
+//obj?.[prop] – возвращает obj[prop], если существует obj, и undefined в противном случае.
+//obj.method?.() – вызывает obj.method(), если существует obj.method, в противном случае возвращает undefined.
