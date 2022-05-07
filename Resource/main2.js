@@ -1105,3 +1105,1254 @@
 
 //Дата и время
 
+// let now = new Date();
+// console.log(now);
+
+
+// let Jan01_1970 = new Date(0);
+// console.log(Jan01_1970);
+//
+// let Jan02_1970= new Date(24*3600*1000);
+// console.log(Jan02_1970);
+
+
+// let Dec31_1969 = new Date(-24*3600*1000);
+// console.log(Dec31_1969);
+
+
+// let date = new Date('2017-01-26');
+// console.log(date);
+
+
+// let date = new Date(2011,0,1,2,3,4,576)
+// console.log(date);
+
+
+// let date = new Date();
+// console.log(date.getDate());
+// console.log(date.getUTCHours());
+// console.log(new Date().getTimezoneOffset());
+
+
+// let date = new Date(2012,1,20,3,12);
+// alert(date)
+
+
+// function getWeekDay(date) {
+//   let weekArr = ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'];
+//   return weekArr[date.getDay()];
+// }
+//
+// let date = new Date(2012,0,3);
+// console.log(getWeekDay(date));
+
+
+// function getDateAgo(date, days) {
+//   let dateCopy = new Date(date);
+//
+//   dateCopy.setDate(date.getDate() - days);
+//   return dateCopy.getDate();
+// }
+//
+// let date = new Date(2015, 0, 2);
+//
+// console.log(getDateAgo(date, 1));
+// console.log(getDateAgo(date, 2));
+// console.log(getDateAgo(date, 365));
+
+
+// function getLastDayOfMonth(year, month) {
+//   let day = new Date(year, month + 1, 0);
+//   return day.getDate();
+// }
+//
+// console.log(getLastDayOfMonth(2012, 0));
+// console.log(getLastDayOfMonth(2012, 1));
+// console.log(getLastDayOfMonth(2013, 1));
+
+
+// function getSecondToday() {
+//   let now = new Date();
+//   let startDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+//   return Math.round((now - startDay) / 1000);
+// }
+//
+// console.log(getSecondToday())
+
+
+//Формат JSON, метод toJSON
+
+// let student = {
+//   name:'John',
+//   age:30,
+//   isAdmin:false,
+//   course:['html','css','js'],
+//   wife:null
+// };
+
+
+// let student = {
+//   name: 'John',
+//   age: 30,
+//   isAdmin: false,
+//   course: ['html', 'css', 'js'],
+//   wife: null,
+// };
+//
+// let json = JSON.stringify(student);
+//
+// console.log(typeof json);
+// console.log(json);
+
+
+// let meetup = {
+//   title: 'Conference',
+//   room: {
+//     number: 23,
+//     participants: ['john', 'ann']
+//   }
+// };
+//
+// console.log(JSON.stringify(meetup));
+
+
+// let room = {
+//   number: 23,
+// };
+//
+// let meetup = {
+//   title: 'Conference',
+//   participants: [{name: 'John'}, {name: 'Alice'}],
+//   place: room,
+// };
+//
+// room.occupiedBy = meetup;
+// // console.log(JSON.stringify(meetup,['title', 'participants', 'place', 'name', 'number'],))
+// console.log(JSON.stringify(meetup, function replacer(key, value) {
+//   console.log(`${key}:${value}`);
+//   return (key === 'occupiedBy') ? undefined : value;
+// }));
+
+
+// let user = {
+//   name: 'John',
+//   age: 25,
+//   roles: {
+//     isAdmin: false,
+//     isEditor: true
+//   }
+// };
+//
+// console.log(JSON.stringify(user, null, 2));
+
+
+// let room={
+//   number:23,
+//   toJSON(){
+//     return this.number;
+//   }
+// };
+//
+// let meetup = {
+//   title:'Conference',
+//   room
+// };
+//
+// console.log(JSON.stringify(room))
+// console.log(JSON.stringify(meetup))
+
+
+// let user = {
+//   name:'Василий Иванович',
+//   age:35
+// };
+//
+// let userJson= JSON.stringify(user);
+// console.log(userJson);
+// let userJsonParse= JSON.parse(userJson);
+// console.log(userJsonParse)
+
+
+//Продвинутая работа с функциями
+//Рекурсия и стек
+
+// let company = {
+//   sales: [{
+//     name: 'John',
+//     salary: 1000
+//   }, {
+//     name: 'Alice',
+//     salary: 600
+//   }],
+//
+//   development: {
+//     sites: [{
+//       name: 'Peter',
+//       salary: 2000
+//     }, {
+//       name: 'Alex',
+//       salary: 1800
+//     }],
+//
+//     internals: [{
+//       name: 'Jack',
+//       salary: 1300
+//     }]
+//   }
+// };
+//
+// function sumSalaries(obj) {
+//   if (Array.isArray(obj)) {
+//     return obj.reduce((prev, current) => prev + current.salary, 0);
+//   } else {
+//     let sum = 0;
+//     for (let subdep of Object.values(obj)) {
+//       sum += sumSalaries(subdep);
+//     }
+//     return sum;
+//   }
+// }
+//
+// console.log(sumSalaries(company));
+
+
+// function sumTo(n) {
+//   if (n===1) {
+//     return n
+//   } else {
+//     return n + sumTo(n-1)
+//   }
+// }
+//
+// console.log(sumTo(100));
+
+
+// let sum = 0
+// for (let i = 0; i <= 100; i++) {
+//   sum += i;
+// }
+// console.log(sum)
+
+
+// function factorial(n) {
+//   if (n===1) {
+//     return n
+//   }else {
+//     return n*factorial(n-1);
+//   }
+// }
+//
+// console.log(factorial(5));
+
+
+// function fib(n) {
+//   if (n<=1){
+//     return n;
+//   }else{
+//     return fib(n-2)+fib(n-1);
+//   }
+// }
+//
+// console.log(fib(77));
+
+
+// let list = {
+//   value: 1,
+//   next: {
+//     value: 2,
+//     next: {
+//       value: 3,
+//       next: {
+//         value: 4,
+//         next: null
+//       }
+//     }
+//   }
+// };
+//
+// function printList(list) {
+//   console.log(list.value)
+//   if (list.next) printList(list.next)
+// }
+//
+//
+// printList(list);
+//
+
+// Остаточные параметры и оператор расширения
+
+// function sumAll(...args) {
+//   let sum = 0;
+//   for (let arg of args) sum += arg;
+//   return sum;
+// }
+//
+// console.log(sumAll(1));
+// console.log(sumAll(1, 2));
+// console.log(sumAll(1, 2, 3));
+
+
+// function showName(firstName, lastName, ...titles) {
+//   console.log(firstName+' '+lastName);
+//   console.log(titles[0]);
+//   console.log(titles[1]);
+// }
+
+
+// function showName() {
+//   console.log(arguments.length);
+//   console.log(arguments[0]);
+//   console.log(arguments[1]);
+// }
+//
+// showName('Юлий','Цезарь');
+// showName('Илья');
+
+
+// let arr1 = [1,-2,3,4];
+// let arr2 = [8,3,-8,1];
+// console.log(Math.max(...arr1,...arr2));
+
+
+// let str = 'Privet';
+// console.log([...str])
+
+
+//Замыкания
+
+// function sayHiBye(firstName, lastName) {
+//   function getFullName() {
+//     return firstName + ' ' + lastName;
+//   }
+//
+//   console.log('Hello,' + getFullName());
+//   console.log('Bye,' + getFullName());
+// }
+//
+// sayHiBye('Mark','Ryabov');
+
+
+// function User(name) {
+//   this.sayHi=function () {
+//     console.log(name);
+//   };
+// }
+//
+// let user = new User('Mark');
+// console.log(user);
+// user.sayHi();
+
+
+// function makeCounter() {
+//   let count = 0;
+//   return function () {
+//     return count++;
+//   };
+// }
+//
+// let counter = makeCounter();
+// console.log(counter());
+// console.log(counter());
+// console.log(counter());
+// console.log(counter());
+
+
+// function inBetween(a, b) {
+//   return function (x) {
+//     return x >= a && x <= b;
+//   }
+// }
+
+
+// function sum(a) {
+//   return function (b){
+//     return a+b;
+//   }
+// }
+//
+// console.log(sum(1)(2));
+// console.log(sum(5)(-1));
+
+// let arr = [1, 2, 3, 4, 5, 6, 7];
+//
+// function inBetween(a, b) {
+//   return function (x) {
+//     return x >= a && x <= b;
+//   }
+// }
+//
+// function inArray(arr) {
+//   return function (x) {
+//     return arr.includes(x);
+//   }
+// }
+//
+// console.log(arr.filter(inBetween(3, 6)));
+// console.log(arr.filter(inArray([1, 2, 10])));
+
+
+// let users = [
+//   {name: "John", age: 20, surname: "Johnson"},
+//   {name: "Pete", age: 18, surname: "Peterson"},
+//   {name: "Ann", age: 19, surname: "Hathaway"}
+// ];
+//
+// function byField(field) {
+//   return function (a, b) {
+//     return (a, b) => a[field] > b[field] ? 1 : -1;
+//   }
+// }
+//
+// users.sort(byField('name'));
+// users.forEach(user => console.log(user.name));
+// users.sort(byField('age'));
+// users.forEach(user => console.log(user.age));
+
+
+// function makeArmy() {
+//   let shooters = [];
+//
+//   let i = 0;
+//   while (i < 10) {
+//     let shooter = function () {
+//       console.log(i);
+//     };
+//     shooters.push(shooter);
+//     i++;
+//   }
+//
+//   return shooters;
+// }
+//
+// let army = makeArmy();
+//
+// army[0]();
+// army[5]();
+//
+// console.log(army);
+
+
+//Устаревшее ключевое слово 'var'
+
+
+// if (true){
+//   var test = true;
+// }
+//
+// console.log(test);
+
+
+// function sayHi() {
+//   phrase = 'Привет';
+//   if (false){
+//     var phrase;
+//   }
+//   console.log(phrase);
+// }
+
+// sayHi()
+
+
+//Глобальный объект
+
+
+// alert('Привет');
+// window.alert('Привет');
+
+
+// var gVar = 5;
+// alert(window.gVar);
+
+
+// window.currentUser = {
+//   name: 'John'
+// };
+
+
+//Объект функции, NFE
+
+
+// function sayHi() {
+//   alert('Hi');
+// }
+// console.log(sayHi.name);
+
+
+// let sayHi = function (){
+//   alert('Hi');
+// }
+//
+// console.log(sayHi.name);
+
+
+// function f(say = function (){}) {
+//   console.log(say.name)
+// }
+// f();
+
+
+// let user = {
+//   sayHi(){
+//
+//   },
+//   sayBy:function (){
+//
+//   }
+// };
+//
+// console.log(user.sayBy.name);
+// console.log(user.sayHi.name);
+
+
+// let arr = [function () {}];
+// console.log(arr[0].name);
+
+
+// function sayHi() {
+//   console.log('Hi');
+//   sayHi.counter++
+// }
+// sayHi.counter = 0;
+//
+// sayHi();
+// sayHi()
+// console.log(`function was called ${sayHi.counter} times`);
+
+
+// function makeCounter() {
+//   function counter() {
+//     return counter.count++;
+//   }
+//   counter.count = 0;
+//   return counter;
+// }
+//
+// let counter = makeCounter();
+// console.log(counter());
+// console.log(counter());
+
+
+// let sayHi = function func(who) {
+//   console.log(`Hello, ${who}`);
+// };
+
+
+// let sayHi = function func(who) {
+//   if (who) {
+//     console.log(`Hello, ${who}`);
+//   }else {
+//     func('Guest');
+//   }
+// };
+//
+// sayHi();
+
+
+// let sayHi = function (who) {
+//   if (who) {
+//     console.log(`Hello, ${who}`);
+//   } else {
+//     sayHi('Guest');
+//   }
+// };
+//
+// let welcome = sayHi;
+// sayHi = null;
+//
+// welcome();
+
+
+// let sayHi = function func(who) {
+//   if (who) {
+//     console.log(`Hello ${who}`);
+//   } else {
+//     func('Guest');
+//   }
+// };
+//
+// let welcome = sayHi;
+// sayHi = null;
+// welcome();
+
+
+// function makeCounter() {
+//   let count = 0;
+//
+//   function counter() {
+//     return count++;
+//   }
+//
+//   counter.set = value => count = value;
+//   counter.decrease = () => count--;
+//
+//   return counter;
+// }
+
+
+// function sum(value) {
+//   let res = value;
+//
+//   function foo(value2) {
+//     res += value2;
+//     return foo;
+//   }
+//
+//   foo.toString = function () {
+//     return res;
+//   };
+//
+//   return foo;
+// }
+//
+// alert(sum(2));
+
+
+// const mul = (x) => {
+//   return (y) => {
+//     return (z) => {
+//       return x * y * z;
+//     };
+//   };
+// };
+//
+// console.log(mul(1)(2)(3));
+
+
+// function sum(a) {
+//   let currentSum = a;
+//
+//   function f(b) {
+//     currentSum += b;
+//     return f
+//   }
+//
+//   f.toString=function () {
+//     return currentSum
+//   }
+//   return f;
+// }
+// alert( sum(0)(2) ); // 3
+// alert( sum(5)(-1)(2) ); // 6
+// alert( sum(6)(-1)(-2)(-3) ); // 0
+// alert( sum(0)(1)(2)(3)(4)(5) ); // 15
+
+
+//new Function
+
+// let sum = new Function('a', 'b', 'return a+b');
+// console.log(sum(1, 2));
+
+
+// let sayHi = new Function('console.log("Hello")');
+// sayHi()
+
+
+// function getFunc() {
+//   let value = 'test';
+//
+//   let func = function () {
+//     console.log(value);
+//   }
+//   return func;
+// }
+//
+// getFunc()();
+
+
+//Планирование: setTimeout и setInterval
+
+// function sayHi() {
+//   console.log('Hello');
+// }
+// setTimeout(sayHi,1000);
+
+// function sayHi(phrase, who) {
+//   console.log(phrase + ' ' + who);
+// }
+// setTimeout(sayHi,1000,'Hello','John');
+
+// setTimeout('alert("Hello")', 1000);
+
+// setTimeout(()=>alert('Hello'),1000);
+
+// let timerId = setTimeout(()=>alert('Nothing'),1000);
+// alert(timerId);
+//
+// clearTimeout(timerId);
+// alert(timerId);
+
+// let timer = setInterval(()=>alert('tick'),2000);
+// setTimeout(()=>{clearInterval(timer);alert('stop');},5000);
+
+// let timerId = setTimeout(function tick() {
+//   console.log('tick');
+//   timerId = setTimeout(tick, 2000);
+// }, 2000);
+
+// setTimeout(()=>alert('World'));
+// alert('hello');
+
+// let start = Date.now();
+// let times = [];
+//
+// setTimeout(function run() {
+//   times.push(Date.now() - start);
+//
+//   if (start + 100 < Date.now()) console.log(times);
+//   else setTimeout(run);
+// });
+
+// function printNumbers(from, to){
+//   let current = from;
+//   let timerId = setInterval(function (){
+//     console.log(current);
+//     if (current===to){
+//       clearInterval(timerId);
+//     }
+//     current++;
+//   },1000);
+// }
+//
+// printNumbers(1,10);
+
+// function printNumbers(from, to) {
+//   // let current = from;
+//     setTimeout(function tick() {
+//     console.log(from);
+//     if (from <= to) setTimeout(tick, 1000);
+//     from++;
+//   }, 1000);
+// }
+
+// printNumbers(1, 10)
+
+
+// Декораторы и переадресация вызова, call/apply
+
+
+// function slow(x) {
+//   console.log(`Called with ${x}`);
+//   return x;
+// }
+//
+// function cachingDecorator(func) {
+//   let cache = new Map();
+//
+//   return function (x) {
+//     if (cache.has(x)) {
+//       return cache.get(x);
+//     }
+//
+//     let result = func(x);
+//
+//     cache.set(x, result);
+//
+//     return
+//     ;
+//   };
+// }
+//
+// slow = cachingDecorator(slow);
+// const slowTwo = cachingDecorator(slow);
+//
+// console.log(slowTwo(1));
+// console.log("Again: " + slowTwo(1));
+//
+// console.log(slowTwo(2));
+// console.log("Again: " + slowTwo(2));
+
+
+// let worker = {
+//   someMethod() {
+//     return 1;
+//   },
+//
+//   slow(x) {
+//     console.log("Called with " + x);
+//     return x * this.someMethod(); // (*)
+//   }
+// };
+//
+// function cachingDecorator(func) {
+//   let cache = new Map();
+//   return function(x) {
+//     if (cache.has(x)) {
+//       return cache.get(x);
+//     }
+//     let result = func.call(worker, x);
+//     cache.set(x, result);
+//     return result;
+//   };
+// }
+//
+// worker.slow = cachingDecorator(worker.slow);
+//
+// console.log(worker.slow(2));
+// console.log(worker.slow(2));
+//
+// console.log(cachingDecorator);
+
+
+//Привязка контекста и функции
+
+// let user = {
+//   firstName: "Vasya",
+//   sayHi(){
+//     console.log(`Hello, ${this.firstName}!`);
+//   }
+// };
+
+// setTimeout(function () {
+//   user.sayHi();
+// },1000);
+
+// setTimeout(()=>user.sayHi(),1000);
+//
+// user = {sayHi() {console.log("Another user in setTimeout!")}};
+
+
+// let user = {
+//   firstName: 'Vasya',
+// };
+//
+// function func() {
+//   console.log(this.firstName);
+// }
+//
+// let funcUser = func.bind(user);
+// funcUser();
+
+
+// let user = {
+//   firstName: 'Vasya',
+// };
+//
+// function func(phrase) {
+//   console.log(phrase + ', ' + this.firstName);
+// }
+//
+// let funcUser = func.bind(user);
+//
+// funcUser('Hello');
+
+
+// let user = {
+//   firstName: 'Vasya',
+//   sayHi(){
+//     console.log(`Hello, ${this.firstName}`);
+//   }
+// };
+//
+// let sayHi = user.sayHi.bind(user);
+// sayHi();
+//
+// setTimeout(sayHi,1000);
+
+
+// let user = {
+//   firstName: "Vasya",
+//   say(phrase){
+//     console.log(`${phrase}, ${this.firstName}`);
+//   }
+// };
+//
+// let say = user.say.bind(user);
+//
+// say('Hello');
+// say('Buy');
+
+
+// function mul(a, b) {
+//   return a * b;
+// }
+//
+// let double = mul.bind(null,2);
+// console.log(double(3));
+// console.log(double(4));
+// console.log(double(5));
+
+
+// function partial(func, ...argsBound) {
+//   return function (...args) {
+//     return func.call(this, ...argsBound, ...args);
+//   }
+// }
+//
+// let user = {
+//   firstName: "John",
+//   say(time, phrase) {
+//     console.log(`[${time}] ${this.firstName}: ${phrase}`);
+//   }
+// };
+//
+// user.sayNow = partial(user.say, new Date().getHours()+ ':' + new Date().getMinutes());
+//
+// user.sayNow('Hello');
+
+
+// function aksPassword(ok, fail) {
+//   let password = prompt('Password?', '');
+//   if (password === 'rockstar') ok();
+//   else fail();
+// }
+//
+// let user = {
+//   name: 'Vasya',
+//
+//   loginOk() {
+//     console.log(`${this.name} logged in`);
+//   },
+//
+//   loginFail() {
+//     console.log(`${this.name} failed to log in`);
+//   },
+// };
+//
+// aksPassword.bind(user, user.loginOk, user.loginFail)();
+
+
+// function askPassword(ok, fail) {
+//   let password = prompt("Password?", '');
+//   if (password === "rockstar") ok();
+//   else fail();
+// }
+//
+// let user = {
+//   name: 'John',
+//
+//   login(result) {
+//     console.log( this.name + (result ? ' logged in' : ' failed to log in') );
+//   }
+// };
+//
+// askPassword(user.login.bind(user,true),user.login.bind(user, false));
+// askPassword(()=>user.login(true),()=>user.login(false));
+
+
+//Повторяем стрелочные функции
+
+
+// let group = {
+//   title: "Our Group",
+//   students: ["John", "Pete", "Alice"],
+//
+//   showList() {
+//     this.students.forEach(
+//       student => console.log(this.title + ': ' + student)
+//     );
+//   }
+// };
+//
+// group.showList()
+
+
+// function defer(f, ms) {
+//   return function (john) {
+//     setTimeout(() => f.apply(this, arguments), ms)
+//   };
+// }
+//
+// function say(who) {
+//   console.log('Hello,' + who);
+// }
+//
+// let sayHiDeferred = defer(say, 2000);
+// sayHiDeferred('John');
+// alert(sayHiDeferred);
+
+
+//Свойства объекта, их конфигурация
+//Флаги и дескрипторы свойств
+
+// let user = {
+//   name: 'John',
+// };
+//
+// let descriptor = Object.getOwnPropertyDescriptor(user,'name');
+// console.log(JSON.stringify(descriptor, null, 2));
+
+
+// let user = {
+//   name: 'John',
+// };
+//
+// Object.defineProperty(user, 'name',{
+//   writable:false
+// });
+//
+// user.name='Pete';
+// console.log(user.name);
+
+
+// let user = {};
+//
+// Object.defineProperty(user, 'name',{
+//   value: 'John',
+//   enumerable: true,
+//   configurable: true
+// });
+//
+// console.log(user.name);
+// user.name='Pete';
+// console.log(user.name);
+
+
+// let user = {
+//   name: 'John',
+//   toString(){
+//     return this.name
+//   }
+// };
+//
+// for (let key in user) console.log(key);
+// user.toString()
+
+
+// let user = {
+//   name: "John",
+//   toString(){
+//     return this.name;
+//   }
+// };
+//
+// Object.defineProperty(user, 'toString',{
+//   enumerable:false
+// });
+//
+// for (let key in user) console.log(key);
+
+
+// let descriptor = Object.getOwnPropertyDescriptor(Math, 'PI');
+// console.log(JSON.stringify(descriptor, null, 2));
+
+
+// let user = {};
+// Object.defineProperty(user, 'name',{
+//   value:'John',
+//   writable: false,
+//   configurable: false
+// });
+//
+// Object.defineProperty(user, 'name', {writable:true});
+//
+// let igh = Object.getOwnPropertyDescriptor(user,'name');
+// console.log(igh);
+
+
+// Свойства - геттеры и сеттеры
+// let user = {
+//   name: 'John',
+//   surname: 'Smith',
+//
+//   get fullName() {
+//     return `${this.name} ${this.surname}`;
+//   },
+//
+//   set fullName(value){
+//     [this.name, this.surname] = value.split(' ');
+//   }
+// };
+//
+// user.fullName = 'Alice Cooper';
+// console.log(user.name);
+// console.log(user.surname);
+
+
+// let user = {
+//   name: 'John',
+//   surname: 'Smith'
+// };
+//
+// Object.defineProperty(user, 'fullName',{
+//   get(){
+//     return `${this.name} ${this.surname}`;
+//   },
+//
+//   set(value) {
+//     [this.name, this.surname] = value.split('');
+//   }
+// });
+//
+// console.log(user.fullName);
+// for(let key in user) console.log(key);
+
+
+// let user = {
+//   get name(){
+//     return this._name;
+//   },
+//
+//   set name(value){
+//     if (value.length<4){
+//       console.log('Имя слишком короткое, должно быть более 4 символов');
+//       return;
+//     }
+//     this._name = value;
+//   }
+// };
+//
+// user.name = 'Pete';
+// console.log(user.name);
+// user.name=' ';
+
+
+//Прототипное наследование
+
+// let animal = {
+//   eats: true,
+//   walk() {
+//     console.log('Animal walk');
+//   }
+// };
+// let rabbit = {
+//   jumps: true,
+//   __proto__: animal,
+// };
+//
+// let longEar = {
+//   earLenght: 10,
+//   __proto__: rabbit,
+// };
+//
+// longEar.walk();
+// console.log(longEar.jumps);
+
+
+// let animal = {
+//   eats: true,
+//   walk(){
+//
+//   }
+// };
+//
+// let rabbit = {
+//   __proto__: animal,
+// };
+//
+// rabbit.walk = function () {
+//   console.log('Rabbit! Bounce-bounce');
+// };
+//
+// rabbit.walk();
+
+
+// let user = {
+//   name: 'John',
+//   surname: 'Smith',
+//
+//   set fullName(value) {
+//     [this.name, this.surname] = value.split(' ');
+//   },
+//
+//   get fullName() {
+//     return `${this.name} ${this.surname}`;
+//   }
+// };
+//
+// let admin = {
+//   __proto__: user,
+//   isAdmin: true
+// };
+//
+// console.log(admin.fullName);
+// admin.fullName = 'Alice Cooper';
+// console.log(admin.name);
+// console.log(admin.surname);
+
+
+// let animal = {
+//   walk() {
+//     if (this.isSleeping) {
+//       console.log('I walk')
+//     }
+//   },
+//   sleep() {
+//     this.isSleeping = true;
+//   }
+// };
+//
+// let rabbit = {
+//   name: 'White Rabbit',
+//   __proto__: animal
+// };
+// rabbit.walk();
+// rabbit.sleep();
+// console.log(rabbit.isSleeping);
+// console.log(rabbit);
+// rabbit.walk();
+
+
+// let animal = {
+//   eats: true
+// };
+//
+// let rabbit = {
+//   jumps: true,
+//   __proto__: animal,
+// };
+// console.log(Object.keys(rabbit));
+// for (let rabbitKey in rabbit) {
+//   console.log(rabbitKey)
+// }
+
+
+// let animal = {
+//   eats: true
+// };
+//
+// let rabbit = {
+//   jumps: true,
+//   __proto__:animal,
+// };
+//
+// for (const rabbitKey in rabbit) {
+//   let isOwn = rabbit.hasOwnProperty(rabbitKey);
+//
+//   if (isOwn){
+//     console.log(`Our: ${rabbitKey}`);
+//   }else {
+//     console.log(`Inherited: ${rabbitKey}`);
+//   }
+// }
+
+
+// let head = {
+//   glasses: 1
+// };
+//
+// let table = {
+//   pen: 3,
+//   __proto__: head,
+// };
+//
+// let bed = {
+//   sheet: 1,
+//   pillow: 2,
+//   __proto__: table,
+// };
+//
+// let pockets = {
+//   money: 2000,
+//   __proto__: bed,
+// };
+//
+// console.log(pockets.pen);
+// console.log(bed.glasses);
+
+
+// let animal = {
+//   eat(){
+//     this.full = true;
+//   }
+// };
+//
+// let rabbit = {
+//   __proto__:animal
+// };
+//
+// rabbit.eat();
+// console.log(rabbit);
+
+loadScript=function () {
+  console.log(new Error('Erorr!!!1'))
+}
