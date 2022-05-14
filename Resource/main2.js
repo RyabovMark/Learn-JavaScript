@@ -2353,6 +2353,6 @@
 // rabbit.eat();
 // console.log(rabbit);
 
-loadScript=function () {
-  console.log(new Error('Erorr!!!1'))
-}
+// loadScript=function () {
+//   console.log(new Error('Erorr!!!1'))
+// }

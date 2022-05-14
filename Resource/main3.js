@@ -520,44 +520,280 @@
 // }
 
 
-//Async/await
-
-
-// async function f(){
-//   return 1;
-// }
-//
-// f().then(console.log);
-
+// Async/await
 
 // async function f(){
 //   let promise = new Promise((resolve, reject)=>{
-//     setTimeout(()=>resolve('готово!'),1000)
+//     setTimeout(()=>resolve('done'),1000)
 //   });
 //
 //   let result = await promise;
 //
-//   console.log(result);
+//   console.log((result))
 // }
 //
 // f();
 
 
-// fetch('https://jsonplaceholder.typicode.com/todos/1')
-//   .then(response => response.json())
-//   .then(json => console.log(json))
+//Генераторы
+
+// let range = {
+//   from: 1,
+//   to: 5,
+//
+//   *[Symbol.iterator](){
+//     for (let value = this.from; value<=this.to; value++){
+//       yield value;
+//     }
+//   }
+// };
+//
+// console.log(...range);
 
 
-// async function loadJson(url) {
-//   try {
-//     let urlResponse = await fetch(url);
-//     let responseJson = await urlResponse.json();
-//     if (responseJson.status === 200) return responseJson
-//   } catch (e) {
-//     throw new Error(e)
+// function* generateSequence(start, end) {
+//   for (let i = start; i < end; i++) {
+//     yield i;
 //   }
 // }
 //
-// loadJson('no-such-user.json');
+// function* generatePasswordCode() {
+//   yield* generateSequence(48, 57);
+//
+//   yield* generateSequence(65, 90);
+//
+//   yield* generateSequence(97, 122);
+//
+// }
+//
+// let str = '';
+// for (let code of generatePasswordCode()) {
+//   str += String.fromCharCode(code);
+// }
+//
+// console.log(str);
 
+
+// Асинхронные итераторы и генераторы
+
+// let range = {
+//   from: 1,
+//   to: 5,
+//
+//   [Symbol.asyncIterator]() {
+//     return {
+//       current: this.from,
+//       last: this.to,
+//
+//       async next() {
+//         await new Promise(resolve => setTimeout(resolve, 1000));
+//
+//         if (this.current <= this.last) {
+//           return {done: false, value: this.current++};
+//         } else {
+//           return {done: true};
+//         }
+//       }
+//     };
+//   }
+// };
+//
+//
+// (async ()=>{
+//   for await (let value of range){
+//     console.log(value)
+//   }
+// })()
+
+
+//Модули
+
+// import sayHi from "./main2.js";
+//
+// console.log(sayHi);
+// sayHi('Mark');
+
+
+//Proxy and Reflect
+
+
+// let target = {};
+// let proxy = new Proxy(target,{});
+//
+// proxy.test = 5;
+// console.log(target.test);
+// console.log(proxy.test);
+//
+// for (let key in proxy) {
+//   console.log(key)
+// }
+//
+// console.log(target);
+// console.log(proxy);
+
+
+// let dictionary = {
+//   'Hello': 'Hola',
+//   'Bye': 'Adios'
+// };
+//
+// dictionary = new Proxy(dictionary,{
+//   get(target, phrase) {
+//     if (phrase in target){
+//       return target[phrase];
+//     }else{
+//       return phrase;
+//     }
+//   }
+// });
+// console.log(dictionary['Hola']);
+// console.log(dictionary['Welcome to Proxy']);
+
+
+// let numbers = [];
+//
+// numbers = new Proxy(numbers, {
+//   set(target, prop, val) {
+//     if (typeof val === 'number') {
+//       target[prop] = val;
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
+// });
+//
+// numbers.push(1);
+// numbers.push(2);
+// console.log(numbers.length);
+//
+// numbers.push('test');
+
+
+// let user = {
+//   name:'Vasya',
+//   age:30,
+//   _password: '****'
+// };
+//
+// user = new Proxy(user,{
+//   ownKeys(target) {
+//     return Object.keys(target).filter(key=>!key.startsWith('_'));
+//   }
+// });
+//
+//
+// for (let key in user) console.log(key);
+//
+// console.log(Object.keys(user));
+// console.log(Object.user(user));
+
+
+// let user = {
+//   name: 'Vasya',
+//   _password: '****',
+// };
+//
+// user = new Proxy(user, {
+//   get(target, prop) {
+//     if (prop.startsWith('_')) {
+//       throw new Error('Access denied')
+//     } else {
+//       let value = target[prop];
+//       return (typeof value === 'function') ? value.bind(target) : value;
+//     }
+//   },
+//   set(target, prop, value) {
+//     if (prop.startsWith('_')) {
+//       throw new Error('Access denied');
+//     } else {
+//       delete target[prop];
+//       return true;
+//     }
+//   },
+//   deleteProperty(target, prop) {
+//     if (prop.startsWith('_')) {
+//       throw new Error('Access denied');
+//     } else {
+//       delete target[prop];
+//       return true;
+//     }
+//   },
+//   ownKeys(target) {
+//     return Object.keys(target).filter(key => !key.startsWith('_'));
+//   }
+// });
+//
+// try {
+//   console.log(user._password);
+// } catch (e) {
+//   console.log(e);
+// }
+//
+// try {
+//   user._password = 'test';
+// } catch (e) {
+//   console.log(e);
+// }
+//
+//
+// try {
+//   delete user._password;
+// } catch (e) {
+//   console.log(e);
+// }
+//
+// for (let key in user) console.log(key);
+
+
+// let range = {
+//   start: 1,
+//   end: 10
+// };
+//
+// range = new Proxy(range, {
+//   has(target, prop) {
+//     return prop >= target.start && prop <= target.end;
+//   }
+// });
+//
+// console.log(5 in range);
+// console.log(90 in range);
+
+
+// function delay(f, ms) {
+//   return new Proxy(f, {
+//     apply(target, thisArg, argArray) {
+//       setTimeout(() => target.apply(thisArg, argArray), ms)
+//     }
+//   });
+// }
+//
+// function sayHi(user) {
+//   console.log(`Hello ${user}`);
+// }
+//
+// let sayHiDelay = delay(sayHi, 3000);
+// sayHiDelay('Vasya');
+
+
+// let user = {
+//   name: 'John',
+// };
+//
+// function wrap(target) {
+//   return new Proxy(target, {
+//     get(target, prop) {
+//       if (target[prop]) {
+//         return target[prop];
+//       } else {
+//         throw new Error('No property');
+//       }
+//     }
+//   });
+// }
+//
+// let user2 = wrap(user);
+// console.log(user2.name);
+// console.log(user2.age);
 
